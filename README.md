@@ -39,17 +39,7 @@ Step 2: Configure Shorebird in Your Flutter Project
    4. Configure Shorebird Engine:
       Shorebird requires its engine to be included in your app. Make sure your Flutter app is built using Shorebird.
 
-Step 3: Build the App Using Shorebird
-   
-   Build the app for iOS:
-
-      shorebird release --platforms=ios
-
-   Build the app for android:
-
-       shorebird release --platforms=android
-
-Step 4: Create a Release
+Step 3: Create a Release
 
   Create a Release for iOS:
 
@@ -59,7 +49,7 @@ Step 4: Create a Release
 
         shorebird release --platforms=android
 
-Step 5: Implement Code Push in Your App
+Step 4: Implement Code Push in Your App
 
   1. Import the Shorebird package in your Dart code:
 
@@ -76,7 +66,7 @@ Step 5: Implement Code Push in Your App
 
           ShorebirdCodePush.checkForUpdates();
 
-Step 6: Create and Apply Patches
+Step 5: Create and Apply Patches
     If you need to update your app without releasing a new version, you can create patches. This allows you to send updates (e.g., bug fixes, asset changes) to users without a full app update.
     Create a Patch:
     After making the necessary changes, create a patch using the following command:
@@ -88,7 +78,7 @@ Step 6: Create and Apply Patches
    Apply the Patch:
    Once the patch is created, it will be available for users to download and apply the update over the air.
 
-Step 7: Testing the Updates
+Step 8: Testing the Updates
    To test OTA updates:
 
   1. Install the app on your device from TestFlight (for iOS) or directly on your Android device.
@@ -111,32 +101,31 @@ Flutter Documentation: https://flutter.dev/docs
 
 Shorebird GitHub: https://github.com/shorebird-dev
 
-Brief Steps that I used to build my iOS app and upload the .ipa file to my Internal Website
+Brief Steps I used to build my iOS app and upload the .ipa file to my internal website
 
-Step 1: Go to flutter file and then run
+Step 1: I went to the Flutter project and ran:
 
     shorebird init
 
-Step 2: run the command
+Step 2: I ran the command:
 
     shorebird release --platforms=ios
 
-Step 3: Go to xcode and archive the app and then upload the signed .ipa file to the internal website.
-And then install the app through the generated QR
+Step 3: I opened Xcode, archived the app, and uploaded the signed .ipa file to the internal website. Then I installed the app using the generated QR code.
 
-Step 4: Changed some UI and logic related things to the flutter app
+Step 4: I changed some UI and logic-related elements in the Flutter app.
 
-Step 5: Run the command
+Step 5: I ran the command:
 
     shorebird patch --platforms=ios --release-version=1.0.0+1
 
-Step 6: After these steps I open the app and there is a button to check for updates, if updates available then shorebird install the updates in my app and require restart the app.
+Step 6: After these steps, I opened the app. There was a button to check for updates, and if updates were available, Shorebird installed them in my app and required restarting the app.
 
-Step 7: After restarting, all the changes are applied in my uploaded app without installing the whole updated app.
+Step 7: After restarting, all the changes were applied to my uploaded app without reinstalling the entire updated app.
 
-(Further R&D required for Testflight and App store uploads)
+(Further R&D was required for TestFlight and App Store uploads.)
 
-Feel free to reach out if you have any further questions or need assistance!
+Note: If anyone would like to contribute to this project, please create a new branch, make your changes, and submit a Pull Request (PR) for review. Once the PR is approved and merged, the changes can be included in the next release or patch.
 
 
 
