@@ -1,8 +1,9 @@
 # Over-The-Air-Update_using_Shorebird
 
-This is a step-by-step guide to set up a flutter project using OTA update using Shorebird.
+This is a step-by-step guide to set up a flutter project using OTA update using Shorebird (Currently working only for generated .ipa files)
 
 Prerequisites
+
 Before proceeding, ensure you have the following:
 
 Flutter SDK installed (preferably the latest stable version).
@@ -110,7 +111,7 @@ Flutter Documentation: https://flutter.dev/docs
 
 Shorebird GitHub: https://github.com/shorebird-dev
 
-Brief Steps for Building an iOS App in Flutter and Uploading to an Internal Website
+Brief Steps that I used to build my iOS app and upload the .ipa file to my Internal Website
 
 Step 1: Go to flutter file and then run
 
@@ -120,10 +121,10 @@ Step 2: run the command
 
     shorebird release --platforms=ios
 
-Step 3: Go to xcode and archive the app and then upload the signed .ipa file to my internal website.
+Step 3: Go to xcode and archive the app and then upload the signed .ipa file to the internal website.
 And then install the app through the generated QR
 
-Step 4: Changed some UI and logic related things to my flutter app
+Step 4: Changed some UI and logic related things to the flutter app
 
 Step 5: Run the command
 
@@ -132,6 +133,8 @@ Step 5: Run the command
 Step 6: After these steps I open the app and there is a button to check for updates, if updates available then shorebird install the updates in my app and require restart the app.
 
 Step 7: After restarting, all the changes are applied in my uploaded app without installing the whole updated app.
+
+(Further R&D required for Testflight and App store uploads)
 
 Feel free to reach out if you have any further questions or need assistance!
 
