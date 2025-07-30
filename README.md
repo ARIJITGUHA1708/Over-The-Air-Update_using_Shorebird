@@ -83,9 +83,21 @@ After making the necessary changes, create a patch using the following command:
 
          shorebird patch --platforms=ios --release-version=1.0.0+4
 
+or
+
+       shorebird patch ios
+
+Step 6: Change the track (by default it is stable)
+
+      shorebird patch ios --track=stable
+      shorebird patch ios --track=beta
+      shorebird patch ios --track=staging
+      
+
 This will create an incremental update (patch) for your app.
 
 Apply the Patch:
+
 Once the patch is created, it will be available for users to download and apply the update over the air.
 
 Step 8: Testing the Updates
@@ -128,6 +140,10 @@ Step 4: I changed some UI and logic-related elements in the Flutter app.
 Step 5: I ran the command:
 
     shorebird patch --platforms=ios --release-version=1.0.0+1
+
+or
+
+    shorebird patch --platform=ios
 
 Step 6: After these steps, I opened the app. There was a button to check for updates, and if updates were available, Shorebird installed them in my app and required restarting the app.
 
