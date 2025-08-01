@@ -1,3 +1,4 @@
+import 'package:calculator_demo/Pages/CalculatorPage.dart';
 import 'package:flutter/material.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 import 'package:toastification/toastification.dart';
@@ -39,15 +40,17 @@ class _HomePageState extends State<HomePage> {
         ScaffoldMessenger.of(context).showMaterialBanner(
           MaterialBanner(
             content: Text("'New Update Available"),
-            actions: [Text("Dismiss")],
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                },
+                child: Text("Dismiss"),
+              ),
+            ],
           ),
         );
-        toastification.show(
-          autoCloseDuration: Duration(seconds: 4),
-          type: ToastificationType.success,
-          style: ToastificationStyle.flat,
-          title: Text('New Update Available'),
-        );
+
         // Perform the update
         await updater.update(track: UpdateTrack.stable);
       } on UpdateException catch (error) {
@@ -58,7 +61,14 @@ class _HomePageState extends State<HomePage> {
         ScaffoldMessenger.of(context).showMaterialBanner(
           MaterialBanner(
             content: Text("No Available update"),
-            actions: [Text("Dismiss")],
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                },
+                child: Text("Dismiss"),
+              ),
+            ],
           ),
         );
         toastification.show(
@@ -69,35 +79,24 @@ class _HomePageState extends State<HomePage> {
 
           title: Text('No update available'),
         );
-      } catch (error) {
-        toastification.show(
-          autoCloseDuration: Duration(seconds: 4),
-          type: ToastificationType.error,
-          style: ToastificationStyle.flat,
-          title: Text('$error'),
-        );
-      }
+      } catch (error) {}
     } else if (status == UpdateStatus.restartRequired) {
       try {
         ScaffoldMessenger.of(context).showMaterialBanner(
           MaterialBanner(
             content: Text("Restart Your App"),
-            actions: [Text("Dismiss")],
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                },
+                child: Text("Dismiss"),
+              ),
+            ],
           ),
         );
-        toastification.show(
-          autoCloseDuration: Duration(seconds: 4),
-          type: ToastificationType.success,
-          style: ToastificationStyle.flat,
-          title: Text('Restart Your App'),
-        );
       } catch (error) {
-        toastification.show(
-          autoCloseDuration: Duration(seconds: 4),
-          type: ToastificationType.error,
-          style: ToastificationStyle.flat,
-          title: Text('$error'),
-        );
+        debugPrint("$error");
       }
     }
   }
@@ -108,7 +107,11 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: ElevatedButton(
         onPressed: () {
           debugPrint("------------");
-          _checkForUpdates();
+          // _checkForUpdates();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CalculatorPage()),
+          );
         },
         child: Icon(Icons.refresh),
       ),
