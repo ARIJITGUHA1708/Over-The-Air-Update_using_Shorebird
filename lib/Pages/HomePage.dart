@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          debugPrint("-----------");
+          debugPrint("------------");
           _checkForUpdates();
         },
         child: Icon(Icons.refresh),
